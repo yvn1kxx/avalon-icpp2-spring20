@@ -1,82 +1,92 @@
 #include <iostream>
+//#include "calculator.hpp"
+
 using namespace std;
-const int x = 3;
-const int y = 4;
-struct row
-{
-	const static int SIZE = y;
-	int data[SIZE];
+//using namespace ext;
+//void helloWorld(); /*{
+//	cout << "Hello world!" << endl;
+//}*/
 
+void print(int* ptr, int size) {
+	for (int i = 0 ; i < size; ++i)
+	{
+		cout << ptr[i] << " ";
+	}
+	cout << endl;
+}
+void printData(int(*data)[3], int rowCount, int size)
+{
+	for (int i = 0 ; i < rowCount; ++i)
+	{
+		print(data[i], size);
+	}
+}
+
+int add(int a, int b=10)
+{
+	return a + b;
+}
+int add(int a, int b, int c)
+{
+	return a + b + c;
+}
+
+struct Point
+{
+	int x;
+	int y;
 };
-void print(row data[], int x)
-{
-	for (int i = 0; i < x; ++i)
-	{
-		for (int j = 0; j < row::SIZE; ++j)
-		{
-			cout << data[i].data[j] << " ";
-		}
-		cout << endl;
-	}
 
+//bool IsSame(Point a, Point b)
+//{
+//	return a.x == b.x && a.y == b.y;
+//}
+bool operator == (Point a, Point b) 
+{
+	return a.x == b.x && a.y == b.y;
+}
+bool operator != (Point a, Point b)
+{
+	return !(a == b);
 }
 
-row inputrow(
-	row row;
-for (int i = 0; i < 5; ++i)
+Point operator + (Point a, Point b)
 {
-	cin >> row.data[i];
+	
+	return { a.x + b.x, a.y + b.y }; 
 }
-return *row;
-);
-
-
-
-
-int* input()
+Point operator *(Point a, int m)
 {
-	int *data[5];
-	for (int i = 0; i < 5; ++i)
-	{
-		cin >> data[i];
-	}
-	return *data;
+	return { a.x * m, a.y *m };
 }
+Point operator * (int m, Point a)
+{
+	return a*m;
 
-
+}
 
 
 int main()
-{
-	int* ptr = input();
-
-	for (int i = 0; i < 5; ++i)
+{//helloWorld();
+	//cout << helloWorld<< endl;
+	//int data[2][3] = {};
+	//print(data[0], 3);    //data + 1
+	//cout << add(5, 6)<< endl;
+	////cout << ext::minus(6, 5) << endl;
+	//cout << add(5)<<endl;
+	//cout << add(5,5,6)<<endl;
+	/*Point a{ 5,6 };
+	Point b{ 8,9 };
+	if (a != b)
 	{
-		cout << ptr[i] << endl;
+		cout<<"Not same"<< endl;
+
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-//	int data2[x][y] = { {2,4,5}, {8,7,4},{} };
-//	int* ptr = &data2[0][0];
-//
-//	row data[3] = { {2,4,5}, {8,7,4},{} };
-//	print(data, x);
-//
-//	cout << row::SIZE << endl;
-//
-//	/*cout << data2 << endl;
-//	cout << **data2 << endl;
-//
-//	cout << data2 + 1 << endl;
-//	cout << **data2 + 1 << endl;*/
+	Point c = 2 * a;*/
+	
 }
+
+//
+//void helloWorld() {
+//	cout << "Hello world!" << endl;
+//}
